@@ -50,7 +50,7 @@ export default function Footer() {
             className="flex flex-col sm:flex-row gap-4 lg:justify-end"
           >
             <a 
-              href="mailto:vjoshii@gmail.com"
+              href="mailto:vjoshii822@gmail.com"
               className="px-8 py-4 bg-white text-black font-bold rounded-2xl flex items-center justify-center gap-2 hover:bg-blue-500 hover:text-white transition-all duration-300 shadow-xl shadow-blue-500/10"
             >
               Start a Conversation <Mail size={18} />
@@ -118,8 +118,8 @@ export default function Footer() {
           <div className="space-y-6">
             <h4 className="text-sm font-bold uppercase tracking-[0.2em] text-gray-500">Connect</h4>
             <div className="space-y-4">
-              <a href="mailto:vjoshii@gmail.com" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors">
-                <Mail size={18} className="text-blue-500" /> vjoshii@gmail.com
+              <a href="mailto:vjoshii822@gmail.com" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors">
+                <Mail size={18} className="text-blue-500" /> vjoshii822@gmail.com
               </a>
               <a href="tel:+918588947924" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors">
                 <Phone size={18} className="text-purple-500" /> +91 8588947924
