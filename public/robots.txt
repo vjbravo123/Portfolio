@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://techhportfolio.netlify.app/sitemap.xml
+Host: https://techhportfolio.netlify.app
