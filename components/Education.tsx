@@ -17,7 +17,7 @@ export default function Education() {
     },
     {
       title: "Full Stack Developer Certification",
-      year: "2024",
+      year: "2025",
       inst: "Internshala Trainings + NSDC",
       logo: "https://internshala.com/static/images/homepage/in.png",
       desc: "Comprehensive training in MERN Stack, REST APIs, and Cloud Deployment.",

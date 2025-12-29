@@ -9,7 +9,7 @@ export default function Experience() {
     {
       role: "Full Stack Developer (MERN)",
       company: "CMTAI",
-      duration: "Sept 2024 – Nov 2024",
+      duration: "Sept 2025 – Nov 2025",
       location: "Noida, India",
       logo: "/cmtai.webp",
       points: [
@@ -22,8 +22,8 @@ export default function Experience() {
     {
       role: "React.js Developer",
       company: "ShikshaNation",
-      duration: "Jun 2024 – Aug 2024",
-      location: "Ghaziabad, India",
+      duration: "Nov 2025 – Present",
+      location: "Noida, India",
       logo: "/shiksha.webp",
       points: [
         "Built 15+ responsive React components with Tailwind CSS",
