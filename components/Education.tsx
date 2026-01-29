@@ -67,7 +67,7 @@ export default function Education() {
             <span className="relative inline-block pr-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 italic leading-[1.1]">
               Certifications
             </span>
-          </h2>
+          </h2> 
         </div>
 
         {/* BENTO GRID */}

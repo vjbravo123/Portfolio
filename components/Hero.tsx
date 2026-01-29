@@ -77,7 +77,7 @@ export default function Hero() {
                             <motion.a
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                href="https://drive.google.com/file/d/1y1_5TC0yZ2O4vAEN4NZrfTCOKCfjp0vZ/view?usp=sharing"
+                                href="https://drive.google.com/file/d/1QUAxrJ8HF7YPoqtm50V6TCvIo7-BUA_x/view"
                                 className="group relative px-8 py-4 bg-blue-600 text-white font-bold rounded-full overflow-hidden flex items-center gap-3"
                             >
                                 <Download size={20} className="relative z-10" />
