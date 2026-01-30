@@ -4,7 +4,7 @@ import { Newspaper, ArrowRight, Zap, Layers } from "lucide-react";
 import Link from "next/link";
 
 // --- Types (Matched to Mongoose Model) ---
-interface BlogPost {
+export interface BlogPost {
   _id: string | number;
   title: string;
   slug: string;

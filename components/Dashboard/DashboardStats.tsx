@@ -32,7 +32,10 @@ const ICONS: Record<string, LucideIcon> = {
 };
 
 // ---------------- CONFIG ----------------
-const STAT_THEME = {
+const STAT_THEME :  Record<
+  keyof typeof ICONS,
+  { gradient: string; accent: string }
+> = {
   FileText: {
     gradient: "from-indigo-500/30 via-blue-500/20 to-transparent",
     accent: "text-indigo-500",
