@@ -1,7 +1,6 @@
-// app/blog/page.tsx (or wherever your main page is)
-import BlogListing from "@/components/blog/BlogListing";
+import { BlogService } from "@/services/blog.services";
+import BlogIndex from "@/components/blog/BlogIndex"; // Renamed for clarity
 
-// FIX: Ensure page rebuilds on search param change
 export const dynamic = "force-dynamic";
 
 interface BlogPageProps {
@@ -9,13 +8,37 @@ interface BlogPageProps {
 }
 
 export default async function BlogPage(props: BlogPageProps) {
-  // 1. Get Params (Next.js 15 safe handling)
   const searchParams = await props.searchParams;
   
-  // Extract and validate strings
-  const category = typeof searchParams.category === "string" ? searchParams.category : "All";
-  const search = typeof searchParams.search === "string" ? searchParams.search : "";
+  // fetch data
+  let allPosts = [];
+  try {
+    allPosts = await BlogService.getRecentPosts();
+  } catch (error) {
+    console.error("Failed to fetch posts:", error);
+  }
 
-  // 2. Render the component with the extracted params
-  return <BlogListing category={category} search={search} />;
+  // Sanitize data to ensure it is serializable (no Date objects, no undefined)
+  const cleanPosts = allPosts.map((post: any) => ({
+    _id: post._id?.toString() || post.id?.toString() || crypto.randomUUID(),
+    title: post.title || "Untitled Post",
+    slug: post.slug || "#",
+    excerpt: post.excerpt || "No description available.",
+    // Handle complex image objects or strings
+    coverImage: typeof post.coverImage === "object" ? post.coverImage?.url : post.coverImage,
+    createdAt: post.createdAt ? new Date(post.createdAt).toISOString() : new Date().toISOString(),
+    readTime: post.readTime || 5,
+    tags: Array.isArray(post.tags) ? post.tags : [],
+    category: post.category || "General",
+    author: {
+      name: post.author?.name || "Editor",
+      image: post.author?.image || null,
+    },
+  }));
+
+  return (
+    <BlogIndex 
+      initialPosts={cleanPosts} 
+    />
+  );
 }

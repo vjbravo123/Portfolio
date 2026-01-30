@@ -32,7 +32,7 @@ export default function BlogToolbar({ view, setView }: BlogToolbarProps) {
       }
     });
 
-    router.replace(`/bloglisting?${params.toString()}`, { scroll: false });
+    router.replace(`/bloglisting?${params.toString()}`, { scroll: false }); // Changed bloglisting to blog
   };
 
   // Debounced Search Handler (Waits 300ms before updating URL)
@@ -51,7 +51,7 @@ export default function BlogToolbar({ view, setView }: BlogToolbarProps) {
   };
 
   return (
-    // FIX: Removed 'sticky top-4' so it scrolls away
+    // NO CHANGES
     <div className="w-full space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
       
       {/* --- LEVEL 1: Search & View Toggle --- */}

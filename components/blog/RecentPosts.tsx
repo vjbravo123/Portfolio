@@ -95,7 +95,7 @@ export default async function RecentPosts({ category, className = "" }: RecentPo
 
           <div className="flex items-center gap-4">
              <Link 
-               href="/blog"
+               href="/bloglisting"
                className="hidden sm:flex group items-center gap-2 px-5 py-2.5 rounded-full bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-sm font-bold text-slate-700 dark:text-zinc-300 hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-lg hover:shadow-indigo-500/10 transition-all"
              >
                View All
@@ -120,7 +120,7 @@ export default async function RecentPosts({ category, className = "" }: RecentPo
         {/* --- MOBILE FOOTER --- */}
         <div className="mt-12 sm:hidden flex justify-center">
           <Link 
-            href="/blog"
+            href="/bloglisting"
             className="flex w-full justify-center items-center gap-2 px-6 py-4 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold text-sm"
           >
             Explore All

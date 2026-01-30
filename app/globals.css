@@ -19,6 +19,15 @@
     animation: orb-move 25s infinite alternate-reverse;
   }
 }
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
 
 @keyframes gradient-move {
   0% { background-position: 0% 50%; }

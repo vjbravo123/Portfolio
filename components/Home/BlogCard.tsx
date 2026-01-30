@@ -17,7 +17,7 @@ export default function BlogCard({ post }: { post: BlogPost }) {
   };
 
   return (
-    <Link href={`/blog/${post.slug}`} className="block h-full">
+    <Link href={`/bloglisting/${post.slug}`} className="block h-full">
       <div className="flex flex-col h-full overflow-hidden bg-white dark:bg-zinc-900 rounded-3xl border border-slate-200 dark:border-zinc-800 shadow-sm transition-shadow hover:shadow-md">
         
         {/* IMAGE CONTAINER */}
