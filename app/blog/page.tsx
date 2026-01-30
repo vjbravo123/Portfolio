@@ -1,17 +1,27 @@
-// app/blog/page.tsx
-import { Metadata } from "next";
-import BlogContent from "./BlogContent";
+import Hero from "@/components/Home/Hero";
+import FeaturedPosts from "@/components/blog/FeaturedPosts";
+import RecentPosts from "@/components/blog/RecentPosts";
+import NewsletterSection from "@/components/Home/NewsletterSection";
+import CategoryBar from "@/components/blog/CategoryBar";
 
-export const metadata: Metadata = {
-  title: "Blog & Technical Insights | Vivek Joshi",
-  description: "Read technical articles on MERN stack development, Next.js tutorials, and case studies on building scalable web applications by Vivek Joshi.",
-  openGraph: {
-    title: "Vivek Joshi's Engineering Blog",
-    description: "Deep dives into React, Node.js, and modern web architecture.",
-    type: "website",
-  }
+type PageProps = {
+  searchParams?: Promise<{
+    [key: string]: string | string[] | undefined;
+  }>;
 };
 
-export default function BlogPage() {
-  return <BlogContent />;
+export default async function Home({ searchParams }: PageProps) {
+  const params = await searchParams;
+
+  const category = typeof params?.category === "string"? params.category : undefined;
+
+  return (
+    <>
+      <Hero />
+      <FeaturedPosts />
+      <CategoryBar/>
+      <RecentPosts category={category} />
+      <NewsletterSection />
+    </>
+  );
 }
