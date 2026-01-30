@@ -5,34 +5,49 @@ import { Briefcase, Calendar, MapPin, Zap, ChevronRight } from "lucide-react";
 import Image from "next/image";
 
 export default function Experience() {
-  const expList = [
-    {
-      role: "Full Stack Developer (MERN)",
-      company: "CMTAI",
-      duration: "Sept 2025 – Nov 2025",
-      location: "Noida, India",
-      logo: "/cmtai.webp",
-      points: [
-        "Architected scalable backend modules using Node.js & Express",
-        "Optimized RESTful APIs reducing response time by 20%",
-        "Managed MongoDB schemas for high-traffic data consistency"
-      ],
-      color: "from-blue-500 to-cyan-400"
-    },
-    {
-      role: "React.js Developer",
-      company: "ShikshaNation",
-      duration: "Nov 2025 – Present",
-      location: "Noida, India",
-      logo: "/shiksha.webp",
-      points: [
-        "Built 15+ responsive React components with Tailwind CSS",
-        "Integrated complex REST APIs for real-time data flow",
-        "Enhanced UX by implementing reusable frontend patterns"
-      ],
-      color: "from-purple-500 to-pink-500"
-    },
-  ];
+const expList = [
+  {
+    role: "Full Stack Developer",
+    company: "Zappy",
+    duration: "Jan 2026 – Present",
+    location: "India",
+    logo: "/zappy.webp",
+    points: [
+      "Developing large-scale applications using Next.js, NestJS, Node.js, and MongoDB",
+      "Building SEO-friendly and high-performance frontends improving Core Web Vitals",
+      "Designing secure REST APIs using JWT and RBAC for user access control",
+      "Deploying services on AWS EC2 and S3 ensuring scalable compute and storage"
+    ],
+    color: "from-green-500 to-emerald-400"
+  },
+  {
+    role: "React.js Developer Intern",
+    company: "ShikshaNation",
+    duration: "Oct 2025 – Dec 2025",
+    location: "Noida, India",
+    logo: "/shiksha.webp",
+    points: [
+      "Migrated backend services to Strapi CMS for easier content management",
+      "Implemented RBAC for Admin, Instructor, and Student roles",
+      "Built reusable React components and improved UX, reducing load time"
+    ],
+    color: "from-purple-500 to-pink-500"
+  },
+   {
+    role: "Full Stack Developer Intern",
+    company: "CMTAI",
+    duration: "Jul 2025 – Sept 2025",
+    location: "Noida, India",
+    logo: "/cmtai.webp",
+    points: [
+      "Built scalable MERN modules and optimized backend performance by 30%",
+      "Designed secure authentication with RBAC and JWT",
+      "Integrated REST APIs for production-ready applications"
+    ],
+    color: "from-blue-500 to-cyan-400"
+  },
+];
+
 
   return (
     <section className="relative py-28 px-6 bg-[#020617] overflow-hidden">
