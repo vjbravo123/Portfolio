@@ -13,7 +13,7 @@ import {
   Home, 
   FileText, 
   Rocket, 
-  Loader2 // Imported Loader icon
+  Loader2 
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -21,11 +21,9 @@ import { usePathname } from "next/navigation";
 function DockIcon({ mouseX, icon, label, href, external, isActive }: any) {
   const ref = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
-  
-  // Track if this specific icon is loading
   const [isLoading, setIsLoading] = useState(false);
 
-  // Reset loading state when the route actually changes or if we click a different tab
+  // Reset loading state when the route actually changes
   useEffect(() => {
     if (isActive) {
       setIsLoading(false);
@@ -41,8 +39,10 @@ function DockIcon({ mouseX, icon, label, href, external, isActive }: any) {
   const width = useSpring(widthSync, { mass: 0.1, stiffness: 150, damping: 12 });
 
   const handleClick = () => {
-    // Only set loading if it's an internal link and we aren't already there
-    if (!external && !isActive) {
+    // 1. Don't load if external
+    // 2. Don't load if we are already on that page
+    // 3. Don't load if it's a hash link (like #projects) because the path won't change
+    if (!external && !isActive && !href.includes('#')) {
       setIsLoading(true);
     }
   };
@@ -52,7 +52,6 @@ function DockIcon({ mouseX, icon, label, href, external, isActive }: any) {
       href={href} 
       target={external ? "_blank" : "_self"}
       onClick={handleClick}
-      // Ensure Next.js tries to preload the data
       prefetch={true} 
     >
       <motion.div
@@ -84,15 +83,12 @@ function DockIcon({ mouseX, icon, label, href, external, isActive }: any) {
           className={`${isActive ? "text-blue-400" : "text-gray-400 group-hover:text-white"} transition-colors`}
         >
           {isLoading ? (
-            // The Spinner State
             <Loader2 className="animate-spin" size={20} />
           ) : (
-            // The Normal Icon
             React.cloneElement(icon, { size: 20 })
           )}
         </motion.div>
 
-        {/* Active Indicator Pulse */}
         {isActive && !isLoading && (
           <div className="absolute -bottom-1 w-1 h-1 bg-blue-400 rounded-full animate-pulse" />
         )}
@@ -110,7 +106,9 @@ export default function BottomNav() {
 
   const items = [
     { icon: <Home />, label: "Home", href: "/" },
-    { icon: <Rocket />, label: "Projects", href: "/#projects" }, // Ensure path is absolute for hash links
+    // Ensure this href matches exactly what you need. 
+    // If on home page, "#projects" works. If coming from blog, "/#projects" ensures you go home first.
+    { icon: <Rocket />, label: "Projects", href: "/#projects" }, 
     { icon: <FileText />, label: "Blogs", href: "/blog" },
     { icon: <Github />, label: "GitHub", href: "https://github.com/vjbravo123", external: true },
     { icon: <Linkedin />, label: "LinkedIn", href: "https://linkedin.com/in/vivek-joshi0101", external: true },
@@ -131,6 +129,7 @@ export default function BottomNav() {
           <DockIcon 
             key={idx} 
             mouseX={mouseX} 
+            // Only strictly match active for non-hash links to avoid confusion
             isActive={pathname === item.href} 
             {...item} 
           />
