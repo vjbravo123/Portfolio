@@ -18,12 +18,11 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-function DockIcon({ mouseX, icon, label, href, external, isActive }: any) {
+function DockIcon({ mouseX, icon, label, href, external, isActive, resetMouse }: any) {
   const ref = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  // Reset loading state when the route actually changes
   useEffect(() => {
     if (isActive) {
       setIsLoading(false);
@@ -35,13 +34,14 @@ function DockIcon({ mouseX, icon, label, href, external, isActive }: any) {
     return val - bounds.x - bounds.width / 2;
   });
 
+  // Made the spring faster (higher stiffness, higher damping) so it snaps back instantly
   const widthSync = useTransform(distance, [-100, 0, 100], [40, 60, 40]);
-  const width = useSpring(widthSync, { mass: 0.1, stiffness: 150, damping: 12 });
+  const width = useSpring(widthSync, { mass: 0.1, stiffness: 200, damping: 15 });
 
   const handleClick = () => {
-    // 1. Don't load if external
-    // 2. Don't load if we are already on that page
-    // 3. Don't load if it's a hash link (like #projects) because the path won't change
+    // 1. Reset the magnification immediately on click
+    resetMouse();
+    
     if (!external && !isActive && !href.includes('#')) {
       setIsLoading(true);
     }
@@ -60,7 +60,7 @@ function DockIcon({ mouseX, icon, label, href, external, isActive }: any) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         whileTap={{ scale: 0.9 }}
-        className={`relative flex items-center justify-center rounded-full border transition-all duration-300 ${
+        className={`relative flex items-center justify-center rounded-full border transition-all duration-200 ${
           isActive 
           ? "bg-blue-500/20 border-blue-400/50 shadow-[0_0_15px_rgba(56,189,248,0.3)]" 
           : "bg-white/5 border-white/10 hover:border-white/30"
@@ -104,10 +104,10 @@ export default function BottomNav() {
 
   useEffect(() => setMounted(true), []);
 
+  const resetMouse = () => mouseX.set(Infinity);
+
   const items = [
     { icon: <Home />, label: "Home", href: "/" },
-    // Ensure this href matches exactly what you need. 
-    // If on home page, "#projects" works. If coming from blog, "/#projects" ensures you go home first.
     { icon: <Rocket />, label: "Projects", href: "/#projects" }, 
     { icon: <FileText />, label: "Blogs", href: "/blog" },
     { icon: <Github />, label: "GitHub", href: "https://github.com/vjbravo123", external: true },
@@ -119,8 +119,16 @@ export default function BottomNav() {
   return (
     <div className="fixed bottom-6 left-0 right-0 flex justify-center z-[100] pointer-events-none px-4">
       <motion.nav
+        // Mouse handlers for PC
         onMouseMove={(e) => mouseX.set(e.pageX)}
-        onMouseLeave={() => mouseX.set(Infinity)}
+        onMouseLeave={resetMouse}
+        
+        // Touch handlers for Mobile (This fixes the "stuck" issue)
+        onTouchMove={(e) => mouseX.set(e.touches[0].clientX)}
+        onTouchStart={(e) => mouseX.set(e.touches[0].clientX)}
+        onTouchEnd={resetMouse}   // Reset immediately when finger lifts
+        onTouchCancel={resetMouse} // Reset if scroll cancels touch
+        
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         className="pointer-events-auto flex items-end gap-3 px-4 py-3 rounded-full bg-[#020617]/80 backdrop-blur-xl border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)] ring-1 ring-blue-500/20"
@@ -129,7 +137,7 @@ export default function BottomNav() {
           <DockIcon 
             key={idx} 
             mouseX={mouseX} 
-            // Only strictly match active for non-hash links to avoid confusion
+            resetMouse={resetMouse}
             isActive={pathname === item.href} 
             {...item} 
           />
