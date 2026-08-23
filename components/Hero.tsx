@@ -54,7 +54,7 @@ export default function Hero() {
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
                             </span>
-                            Available for Hire • Noida & Ghaziabad
+                            Available for Hire • Delhi Ncr
                         </div>
 
                         <h1 className="text-5xl md:text-8xl font-black leading-[1.1] text-white tracking-tighter">
@@ -138,7 +138,7 @@ export default function Hero() {
                                 className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10"
                             >
                                 <p className="text-[10px] text-blue-400 font-mono tracking-tighter uppercase">Based in</p>
-                                <p className="text-white font-bold">Ghaziabad, India 🇮🇳</p>
+                                <p className="text-white font-bold">Delhi NCR, India 🇮🇳</p>
                             </motion.div>
                         </div>
                     </motion.div>
