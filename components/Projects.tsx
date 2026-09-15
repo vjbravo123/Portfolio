@@ -6,6 +6,16 @@ import Image from "next/image";
 
 export default function Projects() {
   const projects = [
+    {
+      title: "AI Productivity Suite",
+      img: "/ai.png", // add your screenshot
+      desc: "A full-stack AI platform orchestrated around Google Gemini via LangChain — conversational chat with persistent history, image-to-description vision analysis, an autonomous news research-and-newsletter agent, and a spaced-repetition study tracker with audio/text logging.",
+      live: "https://ai-project-frontend-two.vercel.app/",
+      fe: "https://github.com/vjbravo123/Ai-project-frontend",
+      be: "https://github.com/vjbravo123/Ai-project-backend",
+      tech: ["Next.js", "NestJS", "LangChain", "Gemini"],
+      color: "from-yellow-500 to-orange-400"
+    },
         {
       title: "Challenger Memories",
       img: "/CM.png",
