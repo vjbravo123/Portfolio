@@ -6,6 +6,16 @@ import Image from "next/image";
 
 export default function Projects() {
   const projects = [
+        {
+      title: "Challenger Memories",
+      img: "/CM.png",
+      desc: "A tribute archive for the STS-51-L Challenger crew where visitors submit personal stories, photos, and videos, pinned to an interactive world map, with an admin dashboard for reviewing and approving submissions.",
+      live: "https://challengermemories.com/",
+      fe: "#", // add your frontend repo link
+      be: "#", // add your backend repo link
+      tech: ["Next.js", "Node.js", "Cloudinary", "Resend"],
+      color: "from-orange-500 to-red-500"
+    },
     {
       title: "Attendance Manager",
       img: "/CAM.webp",
