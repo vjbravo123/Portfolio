@@ -18,7 +18,7 @@ export default function Projects() {
     },
         {
       title: "Challenger Memories",
-      img: "/CM.png",
+      img: "/cm.png",
       desc: "A tribute archive for the STS-51-L Challenger crew where visitors submit personal stories, photos, and videos, pinned to an interactive world map, with an admin dashboard for reviewing and approving submissions.",
       live: "https://challengermemories.com/",
       fe: "#", // add your frontend repo link
